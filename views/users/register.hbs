@@ -1,0 +1,29 @@
+<section>
+    <div>
+        <form method="POST" action="/users/register">
+            <table id="middleTable">
+                <thead><h1 id="pageTitle">Register</h1></thead>
+                <tr>
+                    <td><label for="firstname">Firstname </label></td>
+                    <td><input type="text" name="firstname" required></td>
+                </tr>
+                <tr>
+                    <td><label for="lastname">Lastname </label></td>
+                    <td><input type="text" name="lastname" required></td>
+                </tr>
+                <tr>
+                    <td><label for="email">Email </label></td>
+                    <td><input type="text" name="email" required></td>
+                </tr>
+                <tr>
+                    <td><label for="password">Password </label></td>
+                    <td><input type="password" name="password" required></td>
+                </tr>
+            </table>
+            <div id="middleButton"><input id="buttonForm" type="submit" value="Register"></div>
+        </form>
+    </div>
+    <div>
+        <p id="errorMessage">{{error}}</p>
+    </div>
+</section>

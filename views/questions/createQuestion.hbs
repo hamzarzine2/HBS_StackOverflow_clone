@@ -1,0 +1,46 @@
+<section>
+    <div >
+        <form action="/questions/addQuestion" method="POST">
+        <table id="middleTable">
+            <thead ><h1 id="pageTitle">Create a new question</h1></thead>
+            <tr>
+                <td>
+                    <label for="title"><p>Title :</p></label>
+                </td>
+                <td>
+                   <input type="text" name="title"> 
+                </td>
+            </tr> 
+            <tr>
+                <td>
+                    <label for="subject"><p>Subject :</p> </label>
+                </td> 
+                <td>   
+                    <textarea name="subject" cols="30" rows="5"></textarea>   
+                </td>  
+            </tr>    
+            <tr>
+                <td>
+                    <label for="CreateQuestionCategory"><p>Categorie :</p></label>
+                </td>
+                <td> 
+                    <div >
+                         {{#each category}}
+                        <input type="radio" name="id_cat" id="catCreateQuestion"  value={{this.id_category}}>{{this.name}} <br>
+                        {{/each}}  
+                    </div>
+                    
+                </td>
+            </tr>
+        </table>  
+    <div id="middleButton"> 
+        <input type="submit" value="Create" id="buttonForm">
+    </div>
+            
+    </form> 
+    <p id="errorMessage">{{error}}</p>
+</div>
+    
+
+
+</section>

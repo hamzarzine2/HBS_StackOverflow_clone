@@ -1,0 +1,54 @@
+<section >
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<nav class="topnav navbar-expand-sm bg-dark navbar-dark" id="navBar">
+    
+    <div class="logo">
+        <a class="navbar-brand active" href="/">
+            <img src="/images/logo.png" id="logo" alt="Avatar Logo" > 
+        </a>
+  </div>
+   <div  class="topnav link" id="myTopnav">
+        <!-- Links -->
+        <ul class="nav justify-content-end">
+  {{#if session.isConnected}}
+    {{#if session.isAdmin}}
+    <li class="nav-item">
+        <a class="nav-link" href="/questions/createQuestion">New question</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/users/userOpenQuestion">User</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/users/adminPage">Admin</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/users/logout">Log out</a>
+      </li>    
+    </ul>
+    {{else}}
+    <li class="nav-item">
+        <a class="nav-link" href="/questions/createQuestion">New question</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/users/userOpenQuestion">User</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/users/logout">Log out</a>
+      </li>    
+    </ul>
+    {{/if}}
+  {{else}}
+     <li class="nav-item">
+    <a class="nav-link " href="/users/login">Login</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/users/register">Register</a>
+  </li>
+  </ul>
+  {{/if}}
+
+  </div>
+</nav>
+    
+</section>

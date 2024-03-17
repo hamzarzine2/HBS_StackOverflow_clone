@@ -1,0 +1,21 @@
+<section>
+    <div>
+        <form method="POST" action="/users/login">
+            <table id="middleTable">
+                <thead><h1 id="pageTitle">Login</h1></thead>
+                <tr>
+                    <td><label for="email">Email</label></td>
+                    <td><input type="text" name="email"></td>
+                </tr>
+                <tr>
+                    <td><label for="password">Password</label></td>
+                    <td><input type="password" name="password"></td>
+                </tr>
+            </table>
+            <div id="middleButton"><input id="buttonForm" type="submit" value="Login"></div>
+        </form>
+    </div>
+    <div>
+        <p id="errorMessage">{{error}}</p>
+    </div>
+</section>

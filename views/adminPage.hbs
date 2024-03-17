@@ -1,0 +1,70 @@
+<section>
+    <h1 id="pageTitle">Admin page</h1>
+    <div id="adminPage">
+        <div id="adminDiv">
+         <table id="adminTable">
+             <thead> <h3 id="titleAdmin">Reported Question</h3></thead>
+         {{#each reportedQuestion}}
+            <tr> 
+                <td>
+                    <div id="adminUniqDisplay">
+                    {{#if this.id_right_answer}}
+                        <div id="solved">
+                            <h3><a href="/questions?id={{this.id_question}}">{{this.title}} <i> (SOLVED) </i></a></h3>
+                            <p>{{this.subject}}</p>
+                        </div>            
+                    {{else}}  
+                        <div id="noSolved">
+                            <h3><a href="/questions?id={{this.id_question}}">{{this.title}}</a></h3>
+                            <p>{{this.subject}}</p>
+                        </div>                  
+                    {{/if}} 
+                        <div id="formAdmin">
+                            <form action="/questions/removeQuestion" method="get">
+                                <input type="submit" value="delete" class="buttonAdmin" >
+                                <input type="hidden" name="question" value={{this.id_question}}>
+                            </form>
+                            <form action="/questions/allowQuestion" method="get">
+                                <input type="submit" value="allow" class="buttonAdmin">
+                                <input type="hidden" name="question" value={{this.id_question}}>
+                            </form>
+                        </div>   
+                    </div> 
+                     
+                </td>            
+            </tr>
+             {{/each}} 
+        </table>
+    </div>
+
+    <div id="adminDiv">
+        <table id="adminTable">
+            <thead> <h3  id="titleAdmin">Reported Answer</h3></thead>
+            {{#each reportedAnswer}}
+                <tr> 
+                    <td>
+                        <div id="adminUniqDisplay">
+                                <p>{{this.subject}}</p>
+                            <div id="formAdmin">
+                                <form action="/questions/removeAnswer" method="get">
+                                
+                                    <input type="submit" value="delete" class="buttonAdmin">
+                                    <input type="hidden" name="answer" value={{this.id_answer}}>
+
+                                </form>
+                                <form action="/questions/allowAnswer" method="get">
+                                    <input type="submit" value="allow" class="buttonAdmin" >
+                                    <input type="hidden" name="answer" value={{this.id_answer}}>
+                                </form>
+                            </div>     
+                        </div>
+                        
+                    </td>            
+                </tr>
+            {{/each}} 
+        </table>  
+    </div>
+      
+    
+    </div>
+</section>

@@ -1,0 +1,31 @@
+<section>
+    <h1 id="pageTitle">user page</h1>
+    <div id="userChoice">
+        <form action="/users/userOpenQuestion" method="GET">
+            <input type="submit" value="Your open questions" id="button">
+        </form>
+        <form action="/users/userClosedQuestion">
+            <input type="submit" value="Your closed questions" id="button">
+        </form>
+    </div>
+    {{#each display}}
+        <div id="questionHome">
+            {{#if this.id_right_answer}}
+                <div id="solved">
+                    <h3><a href="/questions?id={{this.id_question}}">{{this.title}} <i> (SOLVED) </i></a></h3>
+                    <p>{{this.subject}}</p>
+                    <p id="date">{{this.date_question}}</p>  
+                </div>            
+            {{else}}  
+            <div id="noSolved">
+                <h3><a href="/questions?id={{this.id_question}}">{{this.title}}</a></h3>
+                <p>{{this.subject}}</p>
+                <p id="date">{{this.date_question}}</p> 
+            </div>                  
+                 
+            {{/if}}
+            
+        </div>
+    {{/each}}
+
+</section>

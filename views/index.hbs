@@ -1,0 +1,54 @@
+<section>
+<h1 id="pageTitle">HOME</h1>
+<div id="filtre">  
+    <div id="divHome">
+            <form action="/searchCategories" method="GET">
+                {{#each category}}
+                   <input type="radio" name="id_cat" id="" value={{this.id_category}}>{{this.name}}<br>
+                    
+                {{/each}} 
+                    <div id="buttonHome">
+                        <input type="submit" value="filtre"  id="button">
+                    </div>
+            </form>
+    </div>
+    <div>
+        <h1 id="sloggan">No exception, <br>No issues, <br>Everyone Happy</h1>
+    </div>
+    <div id="divHome">
+       <form action="/search" method="GET">
+            <input type="text" name="search" id="searchBarre">
+                <div id="buttonHome">
+                    <input type="submit" value="search" id="button">
+                </div>
+        </form> 
+    </div>
+    
+    
+    
+</div>
+     <p id="errorMessage">{{message}} </p>
+
+    {{#each question}}
+        <div id="questionHome">
+            {{#if this.id_right_answer}}
+                <div id="solved">
+                    <h3><a href="/questions?id={{this.id_question}}">{{this.title}} <i> (SOLVED) </i></a></h3>
+                    <p id="date">{{this.date_question}}</p>  
+                </div>            
+            {{else}}  
+                <div id="noSolved">
+                    <h3><a href="/questions?id={{this.id_question}}">{{this.title}}</a></h3>
+                    <p id="date">{{this.date_question}}</p> 
+                </div>                  
+            {{/if}}
+            
+        </div>
+       
+    {{/each}}
+
+    
+
+
+
+</section>

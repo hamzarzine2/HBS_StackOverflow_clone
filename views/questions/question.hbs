@@ -1,0 +1,68 @@
+<section>
+    <section id="questionInfo">
+        <h1>{{question.title}}</h1>
+        <p>{{question.category}}</p>
+        <p id="date">{{question.date_question}}</p>
+        <p>{{question.subject}}</p>
+        <form method="GET" action="/questions/reportQuestion">
+            <div id="reportQuestion">
+                <input id="buttonQ" type="submit" value="Report">
+                <input type="hidden" name="id" value={{question.id_question}}>
+            </div></form>
+    </section>
+
+    <section id="questionAnswers">
+        <table>
+            {{#if rightAnswer}}
+                <tr id="rightAnswerRow">
+                    <th>{{rightAnswer.subject}}</th>
+                    <th>{{rightAnswer.date_answer}}</th>
+                    <th><form method="GET" action="/questions/reportAnswer"><div>
+                        <input id="buttonQ" type="submit" value="Report">
+                        <input type="hidden" name="id_answer" value={{rightAnswer.id_answer}}>
+                        <input type="hidden" name="id_question" value={{question.id_question}}>
+                    </div></form></th>
+                </tr>
+            {{/if}}
+            {{#each answers}}
+                <tr id="answers">
+                    <td>{{this.subject}}</td>
+                    <td>{{this.date_answer}}</td>
+                    <td>
+                        <form method="GET" action="/questions/reportAnswer"> <div>
+                            <input id="buttonQ" type="submit" value="Report">
+                            <input type="hidden" name="id_answer" value={{this.id_answer}}>
+                            <input type="hidden" name="id_question" value={{../question.id_question}}>
+                        </div> </form>
+                        {{#if ../is_owner}}
+                            {{#if ../question.id_right_answer}}
+                            {{else}}
+                                <form method="GET" action="/questions/setRightAnswer"> <div>
+                                    <input id="buttonQ" type="submit" value="Right Answer?">
+                                    <input type="hidden" name="id" value={{this.id_answer}}>
+                                    <input type="hidden" name="id_question" value={{../question.id_question}}>
+                                </div> </form>
+                            {{/if}}
+                        {{/if}}
+                    </td>
+                </tr>
+            {{/each}}
+        </table>
+    </section>
+
+    {{#if session.isConnected}}
+        {{!--{{#if is_owner}}
+        {{else}}--}}
+        {{#if question.id_right_answer}}
+        {{else}}
+            <table id="formNewAnswer">
+                <form method="POST" action="/questions/addAnswer">
+                    <tr> <td> <input type="text" name="subject" size="100" height="10" required> </td> </tr>
+                    <tr> <td> <input type="hidden" name="id_question" value={{question.id_question}}> </td> </tr>
+                    <tr> <td> <input id="button" type="submit" value="Send answer"> </td> </tr>
+                </form>
+            </table>
+        {{/if}}
+        {{!--{{/if}}--}}
+    {{/if}}
+</section>
